@@ -52,6 +52,9 @@ const transporter = nodemailer.createTransport({
   host: "smtp-relay.brevo.com",
   port: 587,
   secure: false,
+  connectionTimeout: 10000,
+  greetingTimeout: 10000,
+  socketTimeout: 10000,
   auth: {
     user: process.env.EMAIL_USER,
     pass: process.env.EMAIL_PASS,
@@ -130,10 +133,7 @@ app.post("/contact", async (req, res) => {
         `,
       });
     } catch (emailError) {
-      console.error(
-        "Email send failed (lead still saved):",
-        emailError.message,
-      );
+      console.error("FULL EMAIL ERROR:", emailError);
     }
 
     res.json({
