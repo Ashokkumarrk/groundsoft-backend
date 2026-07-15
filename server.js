@@ -117,7 +117,7 @@ app.post("/contact", async (req, res) => {
     try {
       await transporter.sendMail({
         from: process.env.EMAIL_USER,
-        to: process.env.EMAIL_USER,
+        to: "groundsofttech@gmail.com",
         subject: "New Lead - Ground Soft Technology",
         html: `
           <h2>New Contact Form Submission</h2>
